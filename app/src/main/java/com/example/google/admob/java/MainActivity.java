@@ -22,6 +22,16 @@ public class MainActivity extends AppCompatActivity {
         Button simple_banner_btn = findViewById(R.id.simple_banner_button);
         Button rectangle_banner_btn = findViewById(R.id.medium_rectangle_banner_button);
         Button large_banner_btn = findViewById(R.id.large_banner_button);
+        Button interstial_ad = findViewById(R.id.interstital_ad_button);
+
+        InterstitalAds.loadInterstital(this, MainActivity.this);
+
+        interstial_ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InterstitalAds.showInterstital(MainActivity.this, MainActivity.this);
+            }
+        });
 
         simple_banner_btn.setOnClickListener(new View.OnClickListener() {
             @Override
