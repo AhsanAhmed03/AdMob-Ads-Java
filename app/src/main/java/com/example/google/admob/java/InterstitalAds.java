@@ -17,13 +17,13 @@ public class InterstitalAds {
 
     public static AdManagerInterstitialAd adManagerInterstitialAd;
 
-    public static void loadInterstital(Context context, Activity activity){
+    public static void loadInterstital(Activity activity){
 
         Log.e("InterstitalAds","Load Interstital Ad Method");
 
         AdManagerAdRequest adRequest = new AdManagerAdRequest.Builder().build();
 
-        AdManagerInterstitialAd.load(context, AppAdsId.INTERSTITAL_ID,
+        AdManagerInterstitialAd.load(activity, AppAdsId.INTERSTITAL_ID,
                 adRequest, new AdManagerInterstitialAdLoadCallback() {
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
@@ -40,7 +40,7 @@ public class InterstitalAds {
         });
     }
 
-    public static void showInterstital(Context context, Activity activity){
+    public static void showInterstital(Activity activity){
 
         if (adManagerInterstitialAd != null){
 
@@ -57,7 +57,7 @@ public class InterstitalAds {
                     super.onAdDismissedFullScreenContent();
                     Log.e("InterstitalAds","Interstital Ad Dismissed...");
                     adManagerInterstitialAd = null;
-                    loadInterstital(context, activity);
+                    loadInterstital(activity);
                 }
 
                 @Override
@@ -65,7 +65,7 @@ public class InterstitalAds {
                     super.onAdFailedToShowFullScreenContent(adError);
                     Log.e("InterstitalAds","Interstital Ad Failed to Show: "+adError.getMessage());
                     adManagerInterstitialAd = null;
-                    loadInterstital(context, activity);
+                    loadInterstital(activity);
                 }
 
                 @Override
@@ -84,7 +84,7 @@ public class InterstitalAds {
             });
         }else{
             Log.e("InterstitalAds","Interstital Ad is Null...");
-            loadInterstital(context, activity);
+            loadInterstital(activity);
         }
     }
 }
